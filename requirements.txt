@@ -1,0 +1,3 @@
+Flask==2.3.2
+onthespot==0.1.6  # Or install via local source
+spotipy
