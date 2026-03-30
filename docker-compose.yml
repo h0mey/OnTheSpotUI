@@ -5,7 +5,7 @@ services:
     build: .
     container_name: onthespot-web
     ports:
-      - "5500:5500"
+      - "5000:5000"
     volumes:
-      - /home/aiden/Jellyfin/Music/Tracks:/app/downloads
+      - ./downloads:/app/downloads
     restart: unless-stopped
