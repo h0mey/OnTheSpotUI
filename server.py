@@ -7,15 +7,15 @@ app = Flask(__name__)
 HTML = """
 <!DOCTYPE html>
 <html>
-  <head><title>OnTheSpot Web UI</title></head>
-  <body>
-    <h1>OnTheSpot Downloader</h1>
-    <form method="POST">
-      <input type="text" name="url" placeholder="Enter Spotify/Apple link" size="50"/>
-      <button type="submit">Download</button>
-    </form>
-    <pre>{{ logs }}</pre>
-  </body>
+<head><title>OnTheSpot Web UI</title></head>
+<body>
+<h1>OnTheSpot Downloader</h1>
+<form method="POST">
+<input type="text" name="url" placeholder="Enter Spotify/Apple link" size="50"/>
+<button type="submit">Download</button>
+</form>
+<pre>{{ logs }}</pre>
+</body>
 </html>
 """
 
@@ -26,7 +26,6 @@ def index():
         url = request.form.get("url")
         if url:
             try:
-                # Example: get track IDs from Spotify album
                 tracks = spotify_get_album_track_ids(url)
                 logs = "\n".join(tracks)
             except Exception as e:
