@@ -1,4 +1,4 @@
-# Use slim Python image
+# Use Python slim image
 FROM python:3.12-slim
 
 # Avoid prompts and bytecode
@@ -13,28 +13,28 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working dir
+# Set working directory
 WORKDIR /app
 
-# Copy requirements if you have one
+# Copy Python requirements
 COPY requirements.txt .
 
-# Install Python dependencies
+# Install dependencies
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy OnTheSpot source
+# Copy OnTheSpot source (from repo or local copy)
 COPY src/ ./src
 COPY pyproject.toml setup.cfg ./
 
-# Install OnTheSpot package
+# Install OnTheSpot
 RUN pip install --no-cache-dir .
 
 # Copy web server script
 COPY server.py .
 
-# Expose port for web UI
+# Expose port for Web UI
 EXPOSE 5000
 
-# Run the web server
+# Run Flask server
 CMD ["python", "server.py"]
